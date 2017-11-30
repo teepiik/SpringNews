@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dspring.profiles.active=production -Dserver.port=$PORT -jar app.jar
+web: java $JAVA_OPTS -Dspring.profiles.active=production -Dserver.port=$PORT -jar build/libs/SpringNews-0.0.1-SNAPSHOT.jar
