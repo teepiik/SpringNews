@@ -17,19 +17,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ItemController {
     
-    @Autowired
-    ItemService itemService;
-    
-    @Autowired
-    public void setup() {
-        Item item1 = new Item();
-        Item item2 = new Item();
-        
-        item1.setKing("uuno");
-        item2.setKing("harald");
-        
-        itemService.addItem(item1);
-        itemService.addItem(item2);
-    }
     
 }
