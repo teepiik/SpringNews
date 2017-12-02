@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>News</title>
+        <meta charset="utf-8"/>       
+        <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
     </head>
+    
     <body>
-        <div>TODO write content</div>
+        <div th:replace="fragments/header :: header"></div>
+        <div>News listed here</div>
+        <ol>
+            <li th:each="news : ${newsList}">
+                <span th:text="${news.name}">category name</span>
+            </li>
+        </ol>
     </body>
 </html>

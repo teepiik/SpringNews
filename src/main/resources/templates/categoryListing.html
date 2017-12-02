@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>SpringNews</title>
+        <title>Categories</title>
         <meta charset="utf-8"/>       
         <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
     </head>
     
     <body>
         <div th:replace="fragments/header :: header"></div>
-        <div>TODO write content</div>
+        <div>Categories listed here</div>
+        <ol>
+            <li th:each="category : ${categories}">
+                <span th:text="${category.name}">category name</span>
+            </li>
+        </ol>
     </body>
 </html>

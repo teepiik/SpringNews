@@ -5,7 +5,7 @@
  */
 package com.teepiik.SpringNews.controller;
 
-import com.teepiik.SpringNews.repository.NewsRepository;
+import com.teepiik.SpringNews.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,19 +16,15 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author teepiik
  */
 @Controller
-public class NewsController {
+public class CategoryController {
     
     @Autowired
-    private NewsRepository newsRepository;
+    private CategoryRepository categoryRepository;
     
-    @GetMapping("/")
+    @GetMapping("/categories")
     public String index(Model model) {
-        return "index";
-    }
-    
-    @GetMapping("/news")
-    public String news(Model model) {
-        model.addAttribute("newsList", newsRepository.findAll());
-        return "newsListing";
+        model.addAttribute("categories", categoryRepository.findAll());
+        
+        return "categoryListing";
     }
 }
