@@ -17,7 +17,7 @@ public class SpringNewsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringNewsApplication.class, args);
 	}
-        
+        /*
         @Bean
         public boolean init() {
             Item item1 = new Item();
@@ -29,5 +29,5 @@ public class SpringNewsApplication {
             itemService.addItem(item1);
             itemService.addItem(item2);
             return true;
-        }
+        }*/
 }
