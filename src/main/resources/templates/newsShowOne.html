@@ -8,11 +8,14 @@
     
     <body>
         <div th:replace="fragments/header :: header"></div>
-        <div>News listed here</div>
+        <div>
+            <h1 th:text="${news.headline}">headline</h1>
+            <h3 th:text="${news.leadParagraph}">lead paragraph</h3>
+        </div>
+        <div>Categories</div>
         <ol>
-            <li th:each="news : ${newsList}">
-                <a th:href="@{/news/{id}(id=${news.id})}" th:text="${news.headline}">Headline</a>
-                <span th:text="${news.leadParagraph}">news lead paragraph</span>
+            <li th:each="category : ${categories}">
+                <span th:text="${category.name}">category</span>
             </li>
         </ol>
     </body>

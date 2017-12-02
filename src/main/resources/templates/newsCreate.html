@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>News</title>
+        <meta charset="utf-8"/>       
+        <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
+    </head>
+    
+    <body>
+        <div th:replace="fragments/header :: header"></div>
+        <div>
+            Enter information and press Submit:<br/>
+            <form th:action="@{/createnews}" method="POST">
+                Headline: <input type="text" name="headline" id="headline"/><br/>
+                Lead Paragraph: <input type="text" name="leadParagraph" id="leadParagraph"/><br/>
+                News Content: <input type="text" name="newsContent" id="newsContent"/><br/>
+                <input type="submit"/>            
+            </form>
+        </div>
+        
+    </body>
+</html>

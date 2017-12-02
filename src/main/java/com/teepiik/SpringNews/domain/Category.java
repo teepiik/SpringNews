@@ -37,4 +37,8 @@ public class Category extends AbstractPersistable<Long>{
     public void setNews(List<News> news) {
         this.news = news;
     }
+    
+    public void addNews(News news) {
+        this.news.add(news);
+    }
 }

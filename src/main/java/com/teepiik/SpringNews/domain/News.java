@@ -12,9 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.TemporalType;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-import org.springframework.data.jpa.repository.Temporal;
 
 /**
  *
@@ -23,7 +21,7 @@ import org.springframework.data.jpa.repository.Temporal;
 @Entity
 public class News extends AbstractPersistable<Long>{
     private String headline;    
-    private String leadPraragraph;
+    private String leadParagraph;
     private String newsContent;
     
     // ei ehkä toimi vielä
@@ -39,16 +37,16 @@ public class News extends AbstractPersistable<Long>{
         return headline;
     }
 
+    public String getLeadParagraph() {
+        return leadParagraph;
+    }
+
+    public void setLeadParagraph(String leadParagraph) {
+        this.leadParagraph = leadParagraph;
+    }
+
     public void setHeadline(String headline) {
         this.headline = headline;
-    }
-
-    public String getLeadPraragraph() {
-        return leadPraragraph;
-    }
-
-    public void setLeadPraragraph(String leadPraragraph) {
-        this.leadPraragraph = leadPraragraph;
     }
 
     public String getNewsContent() {
@@ -82,5 +80,9 @@ public class News extends AbstractPersistable<Long>{
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+    
+    public void addCategory(Category category) {
+        this.categories.add(category);
     }
 }
