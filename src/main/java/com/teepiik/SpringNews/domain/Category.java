@@ -7,6 +7,7 @@ package com.teepiik.SpringNews.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -19,7 +20,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Category extends AbstractPersistable<Long>{
     private String name;
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "categories", fetch = FetchType.EAGER)
     private List<News> news = new ArrayList<>();
 
     public String getName() {

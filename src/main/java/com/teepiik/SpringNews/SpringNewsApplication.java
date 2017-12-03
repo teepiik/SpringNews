@@ -4,6 +4,7 @@ import com.teepiik.SpringNews.domain.Category;
 import com.teepiik.SpringNews.domain.News;
 import com.teepiik.SpringNews.service.CategoryService;
 import com.teepiik.SpringNews.service.NewsService;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -30,7 +31,16 @@ public class SpringNewsApplication {
             News news1 = new News();
             news1.setHeadline("Test headline");
             news1.setLeadParagraph("Test lead paragraph");
+            Date time = new Date();
+            news1.setDate(time); // have to add manually in setup
             newsService.addNews(news1);
+            
+            News news2 = new News();
+            news2.setHeadline("Test DELETE");
+            news2.setLeadParagraph("Destroy me");
+            Date time2 = new Date();
+            news2.setDate(time2); // have to add manually in setup
+            newsService.addNews(news2);
             
             Category category = new Category();
             Category category2 = new Category();
@@ -47,11 +57,11 @@ public class SpringNewsApplication {
             categoryService.addCategory(category3);
             categoryService.addCategory(category4);
             
-            newsService.assignCategory(category.getId(), news1.getId());
-            
-            /* THIS NEEDS FIXING
+            newsService.assignCategory(category.getId(), news1.getId());         
             newsService.assignCategory(category3.getId(), news1.getId());
-            */
+            
+            newsService.assignCategory(category3.getId(), news2.getId());
+            
 
 
             return true;

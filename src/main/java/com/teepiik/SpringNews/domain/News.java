@@ -8,6 +8,7 @@ package com.teepiik.SpringNews.domain;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -24,14 +25,24 @@ public class News extends AbstractPersistable<Long>{
     private String leadParagraph;
     private String newsContent;
     
-    // ei ehkä toimi vielä
     private Date date;
     @ManyToOne
     private Reporter reporter;
     
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
-    // pic
+    
+    private int views;
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+    
+    // add picture if time allows
 
     public String getHeadline() {
         return headline;

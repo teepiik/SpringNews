@@ -47,4 +47,9 @@ public class NewsService {
         
     }
     
+    public void deleteNews(long newsId) {
+        this.newsRepository.delete(newsId);
+    }
+    
+    
 }
