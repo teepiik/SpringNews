@@ -36,7 +36,7 @@ public class NewsService {
     @Transactional
     public void assignCategory(Long categoryId, Long newsId) {
         News news = newsRepository.getOne(newsId);
-        Category category = categoryRepository.getOne(newsId);
+        Category category = categoryRepository.getOne(categoryId);
         news.addCategory(category);
         category.addNews(news);
         newsRepository.save(news);

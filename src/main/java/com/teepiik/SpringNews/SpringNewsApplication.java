@@ -47,7 +47,7 @@ public class SpringNewsApplication {
             categoryService.addCategory(category3);
             categoryService.addCategory(category4);
             
-            //newsService.assignCategory(category.getId(), news1.getId());
+            newsService.assignCategory(category.getId(), news1.getId());
             
             /* THIS NEEDS FIXING
             newsService.assignCategory(category3.getId(), news1.getId());
