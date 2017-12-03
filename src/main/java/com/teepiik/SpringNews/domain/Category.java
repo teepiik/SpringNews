@@ -20,7 +20,9 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Category extends AbstractPersistable<Long>{
     private String name;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "categories", fetch = FetchType.EAGER)
+    
+    // mappedBy = "categories"
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.EAGER)
     private List<News> news = new ArrayList<>();
 
     public String getName() {

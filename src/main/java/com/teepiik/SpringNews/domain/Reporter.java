@@ -7,6 +7,7 @@ package com.teepiik.SpringNews.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -20,7 +21,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Reporter extends AbstractPersistable<Long>{
     private String name;
     
-    @OneToMany(mappedBy="reporter", fetch = FetchType.EAGER)
+    // check if works
+    @OneToMany(mappedBy="reporter", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<News> news = new ArrayList<>();
 
     public String getName() {

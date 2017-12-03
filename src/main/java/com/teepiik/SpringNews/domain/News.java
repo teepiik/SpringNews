@@ -8,9 +8,10 @@ package com.teepiik.SpringNews.domain;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -28,8 +29,9 @@ public class News extends AbstractPersistable<Long>{
     private Date date;
     @ManyToOne
     private Reporter reporter;
-    
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    // cascade = {CascadeType.PERSIST, CascadeType.MERGE} not working 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "news_categories", joinColumns = @JoinColumn(name = "news_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
     private List<Category> categories = new ArrayList<>();
     
     private int views;
