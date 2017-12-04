@@ -10,10 +10,10 @@
         <div th:replace="fragments/header :: header"></div>
         <div>
             Enter information and press Submit:<br/>
-            <form th:action="@{/createnews}" method="POST">
-                Headline: <input type="text" name="headline" id="headline"/><br/>
-                Lead Paragraph: <input type="text" name="leadParagraph" id="leadParagraph"/><br/>
-                News Content: <input type="text" name="newsContent" id="newsContent"/><br/>
+            <form th:action="@{/createnews}" th:object="${news}" method="POST">
+                Headline: <input type="text" name="headline" id="headline" th:field="*{headline}"/><br/>
+                Lead Paragraph: <input type="text" name="leadParagraph" id="leadParagraph" th:field="*{leadParagraph}"/><br/>
+                News Content: <input type="text" name="newsContent" id="newsContent" th:field="*{newsContent}"/><br/>
                 Categories: <select multiple="multiple" name="categories" id="categories" class="form-control" >
                     <option th:each="category : ${allCategories}"
                             th:value="${category.id}"

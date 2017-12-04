@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
@@ -22,8 +24,14 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  */
 @Entity
 public class News extends AbstractPersistable<Long>{
-    private String headline;    
+    @NotNull
+    @Size(min=2, max=30)
+    private String headline;
+    @NotNull
+    @Size(min=5, max=100)
     private String leadParagraph;
+    @NotNull
+    @Size(min=10, max=200)
     private String newsContent;
     
     private Date date;
