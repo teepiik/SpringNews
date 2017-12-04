@@ -6,13 +6,13 @@
 package com.teepiik.SpringNews.controller;
 
 import com.teepiik.SpringNews.domain.News;
+import com.teepiik.SpringNews.repository.CategoryRepository;
 import com.teepiik.SpringNews.repository.NewsRepository;
 import com.teepiik.SpringNews.service.NewsService;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +27,9 @@ public class NewsController {
     
     @Autowired
     private NewsRepository newsRepository;
+    
+    @Autowired
+    private CategoryRepository categoryRepository;
     
     @Autowired
     private NewsService newsService;
@@ -60,7 +63,7 @@ public class NewsController {
     
     @GetMapping("/createnews")
     public String createNews(Model model) {
-        //model.addAttribute("newsList", newsRepository.findAll());
+        model.addAttribute("allCategories", categoryRepository.findAll());
         return "newsCreate";
     }
     

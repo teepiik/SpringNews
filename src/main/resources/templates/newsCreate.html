@@ -14,7 +14,13 @@
                 Headline: <input type="text" name="headline" id="headline"/><br/>
                 Lead Paragraph: <input type="text" name="leadParagraph" id="leadParagraph"/><br/>
                 News Content: <input type="text" name="newsContent" id="newsContent"/><br/>
-                <input type="submit"/>            
+                Categories: <select multiple="multiple" name="categories" id="categories" class="form-control" >
+                    <option th:each="category : ${allCategories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}"></option>
+                </select><br/>
+                <input type="submit"/> 
+                
             </form>
         </div>
         

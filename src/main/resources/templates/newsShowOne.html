@@ -24,7 +24,6 @@
         
         <form method="post"
           class="destroy-form"
-          data-confirm="Are you sure, you want to delete this News"
           th:action="@{/news/{id}/delete(id=${news.id})}">
         <button type="submit" id="deleteBtn" class="btn btn-danger">Delete</button>
         </form>
