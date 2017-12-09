@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author teepiik
  */
 public interface NewsRepository extends JpaRepository<News, Long>{
-    //List<News> findByDate(Pageable pageable);
-    List<News> findFirst5ByDate(LocalDateTime date, Sort sort);
+
+    List<News> findTop5ByOrderByDateDesc();
     
 }

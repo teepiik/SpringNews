@@ -49,7 +49,7 @@ public class NewsController {
         //Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "date");
         //model.addAttribute("latest", this.newsRepository.findAll(pageable));
 
-        //model.addAttribute("latest", newsRepository.findFirst5ByDate());
+        model.addAttribute("latest", newsRepository.findTop5ByOrderByDateDesc());
         return "index";
     }
 
