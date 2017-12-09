@@ -8,6 +8,7 @@ package com.teepiik.SpringNews.controller;
 import com.teepiik.SpringNews.domain.News;
 import com.teepiik.SpringNews.repository.CategoryRepository;
 import com.teepiik.SpringNews.repository.NewsRepository;
+import com.teepiik.SpringNews.repository.ReporterRepository;
 import com.teepiik.SpringNews.service.NewsService;
 import java.util.Date;
 import javax.validation.Valid;
@@ -34,6 +35,9 @@ public class NewsController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private ReporterRepository reporterRepository;
 
     @Autowired
     private NewsService newsService;
@@ -66,6 +70,7 @@ public class NewsController {
 
         model.addAttribute("newsOld", newsRepository.getOne(id));
         model.addAttribute("allCategories", categoryRepository.findAll());
+        model.addAttribute("allReporters", reporterRepository.findAll());
         return "newsEdit";
     }
     
@@ -75,6 +80,7 @@ public class NewsController {
             model.addAttribute("news", new News());
             model.addAttribute("newsOld", newsRepository.getOne(id));
             model.addAttribute("allCategories", categoryRepository.findAll());
+            model.addAttribute("allReporters", reporterRepository.findAll());
             return "newsEdit";
         } else {
 
@@ -103,6 +109,7 @@ public class NewsController {
     public String createNews(Model model) {
         model.addAttribute("news", new News());
         model.addAttribute("allCategories", categoryRepository.findAll());
+        model.addAttribute("allReporters", reporterRepository.findAll());
         return "newsCreate";
     }
 
@@ -111,6 +118,7 @@ public class NewsController {
         if (bs.hasErrors()) {
             model.addAttribute("news", new News());
             model.addAttribute("allCategories", categoryRepository.findAll());
+            model.addAttribute("allReporters", reporterRepository.findAll());
             return "newsCreate";
         } else {
             // sets current time to date, aka news creation time

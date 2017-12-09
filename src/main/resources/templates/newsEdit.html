@@ -19,6 +19,11 @@
                             th:value="${category.id}"
                             th:text="${category.name}"></option>
                 </select><br/>
+                Reporters: <select multiple="multiple" name="reporters" id="reporters" class="form-control" >
+                    <option th:each="reporter : ${allReporters}"
+                            th:value="${reporter.id}"
+                            th:text="${reporter.name}"></option>
+                </select><br/>
                 <input type="submit"/> 
                 
             </form>

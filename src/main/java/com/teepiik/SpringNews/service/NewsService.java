@@ -43,6 +43,7 @@ public class NewsService {
         editing.setNewsContent(news.getNewsContent());
         // assign needed?
         editing.setCategories(news.getCategories());
+        editing.setReporters(news.getReporters());
         
         newsRepository.save(editing);
     }
