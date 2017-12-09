@@ -6,6 +6,8 @@
 package com.teepiik.SpringNews.repository;
 
 import com.teepiik.SpringNews.domain.News;
+import java.util.List;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +15,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author teepiik
  */
 public interface NewsRepository extends JpaRepository<News, Long>{
-    
+    //List<News> findByDate(Pageable pageable);
 }

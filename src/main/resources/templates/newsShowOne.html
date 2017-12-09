@@ -10,9 +10,10 @@
         <div th:replace="fragments/header :: header"></div>
         <div>
             <h1 th:text="${news.headline}">headline</h1>
+            Views:<p th:text="${news.views}">views</p>
             <h3 th:text="${news.leadParagraph}">lead paragraph</h3>
             <p th:text="${news.newsContent}">content</p>
-            <p th:text="${#calendars.format(news.date, 'dd/MMM/yyyy HH:mm')}">date</p>
+            <p th:text="${news.date}">date</p>
             
         </div>
         <div>Categories</div>

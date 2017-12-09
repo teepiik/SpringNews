@@ -33,7 +33,7 @@ public class SpringNewsApplication {
             news1.setLeadParagraph("Test lead paragraph");
             news1.setNewsContent("Testing news, this is content");
             Date time = new Date();
-            news1.setDate(time); // have to add manually in setup
+
             newsService.addNews(news1);
             
             News news2 = new News();
@@ -41,7 +41,7 @@ public class SpringNewsApplication {
             news2.setLeadParagraph("Destroy me");
             news2.setNewsContent("This news is for delete testing");
             Date time2 = new Date();
-            news2.setDate(time2); // have to add manually in setup
+
             newsService.addNews(news2);
             
             Category category = new Category();

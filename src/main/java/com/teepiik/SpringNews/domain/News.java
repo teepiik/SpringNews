@@ -5,6 +5,7 @@
  */
 package com.teepiik.SpringNews.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +25,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  */
 @Entity
 public class News extends AbstractPersistable<Long>{
+    
     @NotNull
     @Size(min=2, max=30)
     private String headline;
@@ -34,7 +36,7 @@ public class News extends AbstractPersistable<Long>{
     @Size(min=10, max=200)
     private String newsContent;
     
-    private Date date;
+    private LocalDateTime date;
     @ManyToOne
     private Reporter reporter;
     // cascade = {CascadeType.PERSIST, CascadeType.MERGE} not working 
@@ -43,6 +45,10 @@ public class News extends AbstractPersistable<Long>{
     private List<Category> categories = new ArrayList<>();
     
     private int views;
+    
+    public News() {
+        this.date = LocalDateTime.now();
+    }
 
     public int getViews() {
         return views;
@@ -78,11 +84,11 @@ public class News extends AbstractPersistable<Long>{
         this.newsContent = newsContent;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

@@ -12,6 +12,9 @@ import com.teepiik.SpringNews.service.NewsService;
 import java.util.Date;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,14 +38,20 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
 
+    //
     @GetMapping("/")
     public String index(Model model) {
+        //Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "date");
+        //model.addAttribute("latest", this.newsRepository.findAll(pageable));
         return "index";
     }
 
     @GetMapping("/news/{id}")
     public String viewOneNews(Model model, @PathVariable Long id) {
         News news = newsRepository.getOne(id);
+        int view = news.getViews() + 1;
+        news.setViews(view);
+        newsRepository.save(news);
         model.addAttribute("news", news);
         model.addAttribute("categories", news.getCategories());
         return "newsShowOne";
@@ -77,8 +86,7 @@ public class NewsController {
             return "newsCreate";
         } else {
             // sets current time to date, aka news creation time
-            Date currentDate = new Date();
-            news.setDate(currentDate);
+
             news.setViews(0);
             newsRepository.save(news);
             return "redirect:/news";
