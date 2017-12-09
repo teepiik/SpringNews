@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>News</title>
+        <meta charset="utf-8"/>       
+        <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
     </head>
+    
     <body>
-        <div>TODO write content</div>
+        <div th:replace="fragments/header :: header"></div>
+        <div>
+            Enter information and press Submit:<br/>
+            <form th:action="@{/news/edit/{id}(id=${newsOld.id})}" th:object="${news}" method="POST">
+                Headline: <input type="text" name="headline" id="headline" th:field="*{headline}"/><br/>
+                Lead Paragraph: <input type="text" name="leadParagraph" id="leadParagraph" th:field="*{leadParagraph}"/><br/>
+                News Content: <input type="text" name="newsContent" id="newsContent" th:field="*{newsContent}"/><br/>
+                Categories: <select multiple="multiple" name="categories" id="categories" class="form-control" >
+                    <option th:each="category : ${allCategories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}"></option>
+                </select><br/>
+                <input type="submit"/> 
+                
+            </form>
+        </div>
+        
     </body>
 </html>
+
+

@@ -56,6 +56,33 @@ public class NewsController {
         model.addAttribute("categories", news.getCategories());
         return "newsShowOne";
     }
+    
+    @GetMapping("/news/edit/{id}")
+    public String editOneNews(Model model, @PathVariable Long id) {
+        //News news = newsRepository.getOne(id);
+        // stub news
+        model.addAttribute("news", new News());
+
+        model.addAttribute("newsOld", newsRepository.getOne(id));
+        model.addAttribute("allCategories", categoryRepository.findAll());
+        return "newsEdit";
+    }
+    
+    @PostMapping("/news/edit/{id}")
+    public String handleEdit(@Valid News news, BindingResult bs, Model model, @PathVariable Long id) {
+        if (bs.hasErrors()) {
+            model.addAttribute("news", new News());
+            model.addAttribute("newsOld", newsRepository.getOne(id));
+            model.addAttribute("allCategories", categoryRepository.findAll());
+            return "newsEdit";
+        } else {
+
+            // Handle edit method
+            newsService.EditOne(news, id);
+            return "redirect:/news";
+        }
+
+    }
 
     @PostMapping("/news/{id}/delete")
     public String deleteNews(@PathVariable Long id) {

@@ -30,7 +30,20 @@ public class NewsService {
     private NewsRepository newsRepository;
     
     public Long addNews(News news) {
+        // add assign?
         return newsRepository.save(news).getId();
+    }
+    
+    @Transactional
+    public void EditOne(News news, Long oldId) {
+        News editing = newsRepository.getOne(oldId);
+        editing.setHeadline(news.getHeadline());
+        editing.setLeadParagraph(news.getLeadParagraph());
+        editing.setNewsContent(news.getNewsContent());
+        // assign needed?
+        editing.setCategories(news.getCategories());
+        
+        newsRepository.save(editing);
     }
     
     @Transactional

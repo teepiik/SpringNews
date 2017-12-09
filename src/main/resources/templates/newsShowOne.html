@@ -22,6 +22,7 @@
                 <span th:text="${category.name}">category</span>
             </li>
         </ol>
+        <div><a th:href="@{/news/edit/{id}(id=${news.id})}">Edit</a><br/></div>
         
         <form method="post"
           class="destroy-form"
