@@ -7,6 +7,7 @@ package com.teepiik.SpringNews.service;
 
 import com.teepiik.SpringNews.domain.Category;
 import com.teepiik.SpringNews.domain.News;
+import com.teepiik.SpringNews.domain.Reporter;
 import com.teepiik.SpringNews.repository.CategoryRepository;
 import com.teepiik.SpringNews.repository.NewsRepository;
 import com.teepiik.SpringNews.repository.ReporterRepository;
@@ -56,8 +57,14 @@ public class NewsService {
         categoryRepository.save(category);
     }
     
+    @Transactional
     public void assignReporter(Long reporterId, Long newsId) {
-        
+        News news = newsRepository.getOne(newsId);
+        Reporter reporter = reporterRepository.getOne(reporterId);
+        news.addReporter(reporter);
+        reporter.addNews(news);
+        newsRepository.save(news);
+        reporterRepository.save(reporter);
     }
     
     public void deleteNews(long newsId) {

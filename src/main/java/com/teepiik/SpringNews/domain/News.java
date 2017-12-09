@@ -37,8 +37,15 @@ public class News extends AbstractPersistable<Long>{
     private String newsContent;
     
     private LocalDateTime date;
+    
+    /*
     @ManyToOne
-    private Reporter reporter;
+    private Reporter reporter;*/
+    
+    @ManyToMany//(fetch = FetchType.EAGER)
+    @JoinTable(name = "news_reporters", joinColumns = @JoinColumn(name = "news_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "reporter_id", referencedColumnName = "id"))
+    private List<Reporter> reporters = new ArrayList<>();
+    
     // cascade = {CascadeType.PERSIST, CascadeType.MERGE} not working 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "news_categories", joinColumns = @JoinColumn(name = "news_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
@@ -57,8 +64,6 @@ public class News extends AbstractPersistable<Long>{
     public void setViews(int views) {
         this.views = views;
     }
-    
-    // add picture if time allows
 
     public String getHeadline() {
         return headline;
@@ -92,15 +97,6 @@ public class News extends AbstractPersistable<Long>{
         this.date = date;
     }
 
-    public Reporter getReporter() {
-        return reporter;
-    }
-
-    public void setReporter(Reporter reporter) {
-        this.reporter = reporter;
-    }
-
-
     public List<Category> getCategories() {
         return categories;
     }
@@ -111,5 +107,17 @@ public class News extends AbstractPersistable<Long>{
     
     public void addCategory(Category category) {
         this.categories.add(category);
+    }
+
+    public List<Reporter> getReporters() {
+        return reporters;
+    }
+
+    public void setReporters(List<Reporter> reporters) {
+        this.reporters = reporters;
+    }
+    
+    public void addReporter(Reporter reporter) {
+        this.reporters.add(reporter);
     }
 }

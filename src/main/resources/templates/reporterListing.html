@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Reporters</title>
+        <meta charset="utf-8"/>       
+        <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
+    </head>
+    
+    <body>
+        <div th:replace="fragments/header :: header"></div>
+        <div>Reporters listed here</div>
+        <ol>
+            <li th:each="reporter : ${reporters}">
+                <span th:text="${reporter.name}">category name</span>
+            </li>
+        </ol>
+    </body>
+</html>
+

@@ -54,6 +54,7 @@ public class NewsController {
         newsRepository.save(news);
         model.addAttribute("news", news);
         model.addAttribute("categories", news.getCategories());
+        model.addAttribute("reporters", news.getReporters());
         return "newsShowOne";
     }
     
