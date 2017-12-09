@@ -6,8 +6,9 @@
 package com.teepiik.SpringNews.repository;
 
 import com.teepiik.SpringNews.domain.News;
+import java.time.LocalDateTime;
 import java.util.List;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -16,4 +17,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface NewsRepository extends JpaRepository<News, Long>{
     //List<News> findByDate(Pageable pageable);
+    List<News> findFirst5ByDate(LocalDateTime date, Sort sort);
+    
 }

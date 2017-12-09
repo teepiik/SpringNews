@@ -5,16 +5,17 @@
  */
 package com.teepiik.SpringNews.controller;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import com.teepiik.SpringNews.domain.News;
 import com.teepiik.SpringNews.repository.CategoryRepository;
 import com.teepiik.SpringNews.repository.NewsRepository;
 import com.teepiik.SpringNews.repository.ReporterRepository;
 import com.teepiik.SpringNews.service.NewsService;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +48,8 @@ public class NewsController {
     public String index(Model model) {
         //Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "date");
         //model.addAttribute("latest", this.newsRepository.findAll(pageable));
+
+        //model.addAttribute("latest", newsRepository.findFirst5ByDate());
         return "index";
     }
 
