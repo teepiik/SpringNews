@@ -33,7 +33,7 @@ public class News extends AbstractPersistable<Long>{
     @Size(min=5, max=100)
     private String leadParagraph;
     @NotNull
-    @Size(min=10, max=200)
+    @Size(min=10, max=500)
     private String newsContent;
     
     private LocalDateTime date;

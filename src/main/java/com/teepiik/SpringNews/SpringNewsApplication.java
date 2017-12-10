@@ -29,48 +29,66 @@ public class SpringNewsApplication {
 		SpringApplication.run(SpringNewsApplication.class, args);
 	}
         
-        // Lisätään alkudataa
+        // Categories and Reporters added
         @Bean
         public boolean init() {
             
             News news1 = new News();
-            news1.setHeadline("Test headline");
-            news1.setLeadParagraph("Test lead paragraph");
-            news1.setNewsContent("Testing news, this is content");
+            news1.setHeadline("Patrik Laine in a point streak");
+            news1.setLeadParagraph("Finnish forward has points in 5 consecutive games so far.");
+            news1.setNewsContent("Last night Jets visited Penguins in a 5-4 overtime win. Laine had one powerplay goal in a second period when he one-timered Ehlers cross ice pass behind Matt Murray.");
             newsService.addNews(news1);
             
             News news2 = new News();
-            news2.setHeadline("Test DELETE");
-            news2.setLeadParagraph("Destroy me");
-            news2.setNewsContent("This news is for delete testing");
+            news2.setHeadline("Is Lorem ipsum art?");
+            news2.setLeadParagraph("Read the first lines of Lorem Ipsum here.");
+            news2.setNewsContent(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in mattis sem. In fermentum elit vel luctus egestas. Ut eros velit, faucibus quis tempus ut, sodales vitae neque. Praesent ac odio et leo sodales fermentum sed eu justo. Maecenas suscipit diam sed nisl auctor pharetra. Cras ac mi sem. Pellentesque neque nulla, suscipit eu neque eleifend, rhoncus iaculis eros. ");
             newsService.addNews(news2);
             
             Category category = new Category();
             Category category2 = new Category();
             Category category3 = new Category();
             Category category4 = new Category();
+            Category category5 = new Category();
+            Category category6 = new Category();
+            Category category7 = new Category();
+            Category category8 = new Category();
             
-            category.setName("Kotimaan uutiset");
-            category2.setName("Ulkomaan uutiset");
-            category3.setName("Urheilu");
-            category4.setName("Viihde");
+            category.setName("Finland");
+            category2.setName("World");
+            category3.setName("Sports");
+            category4.setName("Health");
+            category5.setName("Science");
+            category6.setName("Style & Arts");
+            category7.setName("Business");
+            category8.setName("Politics");
             
             categoryService.addCategory(category);
             categoryService.addCategory(category2);
             categoryService.addCategory(category3);
             categoryService.addCategory(category4);
+            categoryService.addCategory(category5);
+            categoryService.addCategory(category6);
+            categoryService.addCategory(category7);
+            categoryService.addCategory(category8);
             
            
             Reporter repo1 = new Reporter();
             Reporter repo2 = new Reporter();
-            repo1.setName("Pekka");
-            repo2.setName("Kikka");
+            Reporter repo3 = new Reporter();
+            Reporter repo4 = new Reporter();
+            repo1.setName("Judith Blackwater");
+            repo2.setName("Michael Monroe");
+            repo3.setName("Marie Curry");
+            repo4.setName("Steven Kingston");
             reporterService.addReporter(repo1);
             reporterService.addReporter(repo2);
+            reporterService.addReporter(repo3);
+            reporterService.addReporter(repo4);
             
             newsService.assignCategory(category.getId(), news1.getId());         
             newsService.assignCategory(category3.getId(), news1.getId());            
-            newsService.assignCategory(category3.getId(), news2.getId());
+            newsService.assignCategory(category6.getId(), news2.getId());
             
             newsService.assignReporter(repo1.getId(), news1.getId());
             newsService.assignReporter(repo1.getId(), news2.getId());
