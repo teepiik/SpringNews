@@ -80,7 +80,7 @@ public class NewsController {
     @PostMapping("/news/edit/{id}")
     public String handleEdit(@Valid News news, BindingResult bs, Model model, @PathVariable Long id) {
         if (bs.hasErrors()) {
-            model.addAttribute("news", new News());
+            //model.addAttribute("news", news);
             model.addAttribute("newsOld", newsRepository.getOne(id));
             model.addAttribute("allCategories", categoryRepository.findAll());
             model.addAttribute("allReporters", reporterRepository.findAll());
@@ -119,7 +119,7 @@ public class NewsController {
     @PostMapping("/createnews")
     public String handleCreation(@Valid News news, BindingResult bs, Model model) {
         if (bs.hasErrors()) {
-            model.addAttribute("news", new News());
+            //model.addAttribute("news", news);
             model.addAttribute("allCategories", categoryRepository.findAll());
             model.addAttribute("allReporters", reporterRepository.findAll());
             return "newsCreate";
