@@ -14,7 +14,7 @@
                 <a th:href="@{/news/{id}(id=${news.id})}" th:text="${news.headline}">Headline</a>
                 <span th:text="${news.leadParagraph}">news lead paragraph</span>
                 <span th:text="${news.date}">date</span>
-                <!-- #calendars.format(news.date, 'dd/MMM/yyyy HH:mm')-->
+                <!-- #calendars.format(news.date, 'dd/MMM/yyyy HH:mm:ss')-->
             </li>
         </ol>
         <div><a th:href="@{/createnews}">Create news</a><br/></div>

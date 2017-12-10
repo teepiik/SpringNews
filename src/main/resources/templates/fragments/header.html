@@ -4,21 +4,35 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>    
-       <meta charset="UTF-8"/>
-       <title>Title</title>
-       <style>
-       </style>
+        <meta charset="UTF-8"/>
+        <title>Title</title>
+        <style>
+        </style>
     </head>
     <body>
         <header>
+            <div class="topnav" id="myTopnav">
+                <a class="active" th:href="@{/}">Home</a>
+                <a th:href="@{/news}">News</a>
+                <a th:href="@{/categories}">Categories</a>
+                <a th:href="@{/reporters}">Reporters</a>
+
+            </div> 
+            <div>
+                &nbsp; 
+                &nbsp;
+            </div>
+
+
+            <!--
             <ul>
                 <li><a th:href="@{/}">Home</a></li>
                 <li><a th:href="@{/news}">News</a></li>
                 <li><a th:href="@{/categories}">Categories</a></li>
                 <li><a th:href="@{/reporters}">Reporters</a></li>
-            </ul>
+            </ul>-->
         </header>
     </body>
 </html>
