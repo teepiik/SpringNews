@@ -37,6 +37,7 @@ public class NewsService {
         return newsRepository.save(news).getId();
     }
     
+    // handles news editing
     @Transactional
     public void EditOne(News news, Long oldId) {
         News editing = newsRepository.getOne(oldId);
@@ -74,6 +75,7 @@ public class NewsService {
         this.newsRepository.delete(newsId);
     }
     
+    // lists all news connected with given category
     public List<News> findWithCategory(Category category) {
         List<News> newsByCategory = new ArrayList<>();
         List<News> allNews = new ArrayList<>();

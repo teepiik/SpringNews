@@ -29,7 +29,7 @@ public class SpringNewsApplication {
 		SpringApplication.run(SpringNewsApplication.class, args);
 	}
         
-        // Categories and Reporters added
+        // Base data added here
         @Bean
         public boolean init() {
             

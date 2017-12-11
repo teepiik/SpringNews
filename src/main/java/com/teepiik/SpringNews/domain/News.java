@@ -29,24 +29,22 @@ public class News extends AbstractPersistable<Long>{
     @NotNull
     @Size(min=2, max=30)
     private String headline;
+    
     @NotNull
     @Size(min=5, max=100)
     private String leadParagraph;
+    
     @NotNull
     @Size(min=10, max=500)
     private String newsContent;
     
     private LocalDateTime date;
     
-    /*
-    @ManyToOne
-    private Reporter reporter;*/
-    
-    @ManyToMany//(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "news_reporters", joinColumns = @JoinColumn(name = "news_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "reporter_id", referencedColumnName = "id"))
     private List<Reporter> reporters = new ArrayList<>();
     
-    // cascade = {CascadeType.PERSIST, CascadeType.MERGE} not working 
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "news_categories", joinColumns = @JoinColumn(name = "news_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
     private List<Category> categories = new ArrayList<>();

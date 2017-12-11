@@ -68,10 +68,8 @@ public class NewsController {
     
     @GetMapping("/news/edit/{id}")
     public String editOneNews(Model model, @PathVariable Long id) {
-        //News news = newsRepository.getOne(id);
-        // stub news
+        //News news = newsRepository.getOne(id); not needed
         model.addAttribute("news", new News());
-
         model.addAttribute("newsOld", newsRepository.getOne(id));
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allReporters", reporterRepository.findAll());
@@ -81,14 +79,13 @@ public class NewsController {
     @PostMapping("/news/edit/{id}")
     public String handleEdit(@Valid News news, BindingResult bs, Model model, @PathVariable Long id) {
         if (bs.hasErrors()) {
-            //model.addAttribute("news", news);
+            //model.addAttribute("news", news); not needed
             model.addAttribute("newsOld", newsRepository.getOne(id));
             model.addAttribute("allCategories", categoryRepository.findAll());
             model.addAttribute("allReporters", reporterRepository.findAll());
             return "newsEdit";
         } else {
-
-            // Handle edit method
+            // Handles edit method
             newsService.EditOne(news, id);
             return "redirect:/news";
         }
@@ -97,9 +94,7 @@ public class NewsController {
 
     @PostMapping("/news/{id}/delete")
     public String deleteNews(@PathVariable Long id) {
-
         newsService.deleteNews(id);
-
         return "redirect:/news";
     }
 
@@ -120,13 +115,11 @@ public class NewsController {
     @PostMapping("/createnews")
     public String handleCreation(@Valid News news, BindingResult bs, Model model) {
         if (bs.hasErrors()) {
-            //model.addAttribute("news", news);
+            //model.addAttribute("news", news); not needed
             model.addAttribute("allCategories", categoryRepository.findAll());
             model.addAttribute("allReporters", reporterRepository.findAll());
             return "newsCreate";
         } else {
-            // sets current time to date, aka news creation time
-
             news.setViews(0);
             newsRepository.save(news);
             return "redirect:/news";

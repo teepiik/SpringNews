@@ -20,13 +20,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Reporter extends AbstractPersistable<Long>{
     private String name;
     
-    @ManyToMany(mappedBy = "reporters") // , fetch = FetchType.EAGER
+    @ManyToMany(mappedBy = "reporters")
     private List<News> news = new ArrayList<>();
-    
-        /*
-    // check if works
-    @OneToMany(mappedBy="reporter", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<News> news = new ArrayList<>();*/
 
     public String getName() {
         return name;
