@@ -62,6 +62,7 @@ public class NewsController {
         model.addAttribute("news", news);
         model.addAttribute("categories", news.getCategories());
         model.addAttribute("reporters", news.getReporters());
+        model.addAttribute("latest", newsRepository.findTop5ByOrderByDateDesc());
         return "newsShowOne";
     }
     

@@ -5,7 +5,7 @@
         <meta charset="utf-8"/>       
         <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
     </head>
-    
+
     <body>
         <div th:replace="fragments/header :: header"></div>
         <div>
@@ -14,7 +14,7 @@
             <h3 th:text="${news.leadParagraph}">lead paragraph</h3>
             <p th:text="${news.newsContent}">content</p>
             <p th:text="${news.date}">date</p>
-            
+
         </div>
         <div>Categories</div>
         <ol>
@@ -22,7 +22,7 @@
                 <span th:text="${category.name}">category</span>
             </li>
         </ol>
-        
+
         <div>Reporters</div>
         <ol>
             <li th:each="reporter : ${reporters}">
@@ -30,11 +30,23 @@
             </li>
         </ol>
         <div><a th:href="@{/news/edit/{id}(id=${news.id})}">Edit</a><br/></div>
-        
+
         <form method="post"
-          class="destroy-form"
-          th:action="@{/news/{id}/delete(id=${news.id})}">
-        <button type="submit" id="deleteBtn" class="btn btn-danger">Delete</button>
+              class="destroy-form"
+              th:action="@{/news/{id}/delete(id=${news.id})}">
+            <button type="submit" id="deleteBtn" class="btn btn-danger">Delete</button>
         </form>
+        <div>
+            &nbsp; 
+            &nbsp;
+        </div>
+        <div>Latest news</div>
+        <ol>
+            <li th:each="news : ${latest}">
+                <a th:href="@{/news/{id}(id=${news.id})}" th:text="${news.headline}">Headline</a>
+                <span th:text="${news.leadParagraph}">news lead paragraph</span>
+                <span th:text="${news.date}">date</span>
+            </li>
+        </ol>
     </body>
 </html>
