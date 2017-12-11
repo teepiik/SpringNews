@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>News</title>
+        <meta charset="utf-8"/>       
+        <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
+    </head>
+    
+    <body>
+        <div th:replace="fragments/header :: header"></div>
+        <div>News with category:
+            <h2 th:text="${category.name}">name of category</h2>
+        </div>
+        <ol>
+            <li th:each="news : ${newsOfCategory}">
+                <a th:href="@{/news/{id}(id=${news.id})}" th:text="${news.headline}">Headline</a>
+                <span th:text="${news.leadParagraph}">news lead paragraph</span>
+                <span th:text="${news.date}">date</span>
+                <!-- #calendars.format(news.date, 'dd/MMM/yyyy HH:mm:ss')-->
+            </li>
+        </ol>
+    </body>
+</html>
+

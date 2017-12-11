@@ -11,7 +11,7 @@
         <div>Categories listed here</div>
         <ol>
             <li th:each="category : ${categories}">
-                <span th:text="${category.name}">category name</span>
+                <a th:href="@{/categories/{id}(id=${category.id})}" th:text="${category.name}">category name</a>
             </li>
         </ol>
     </body>

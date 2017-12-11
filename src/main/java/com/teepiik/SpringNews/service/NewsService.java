@@ -11,6 +11,8 @@ import com.teepiik.SpringNews.domain.Reporter;
 import com.teepiik.SpringNews.repository.CategoryRepository;
 import com.teepiik.SpringNews.repository.NewsRepository;
 import com.teepiik.SpringNews.repository.ReporterRepository;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,6 +72,18 @@ public class NewsService {
     
     public void deleteNews(long newsId) {
         this.newsRepository.delete(newsId);
+    }
+    
+    public List<News> findWithCategory(Category category) {
+        List<News> newsByCategory = new ArrayList<>();
+        List<News> allNews = new ArrayList<>();
+        allNews = newsRepository.findAll();
+        for(News news : allNews) {
+            if(news.getCategories().contains(category)) {
+                newsByCategory.add(news);
+            }             
+        }      
+        return newsByCategory;
     }
     
     
